@@ -104,14 +104,14 @@ namespace UniversalMachine
                     light.UpdateParticle(Simulands[y]);
                 }
 
-                Shackle.Bind(Simulands[y]);
+                //Shackle.Bind(Simulands[y]);
 
                 List<Particle> simulatedParticles = new List<Particle>();
                 foreach (int c in CurrentParticles) 
                     simulatedParticles.Add(Simulands[c]);
 
-                if (simulatedParticles.Count - 1 > 0)
-                    ForceExchanger.Exchange(simulatedParticles, Simulands[y]);
+                //if (simulatedParticles.Count - 1 > 0)
+                //    ForceExchanger.Exchange(simulatedParticles, Simulands[y]);
 
                 CurrentParticles[i] = y;
             }

@@ -58,7 +58,7 @@ namespace UniversalMachine
             float distance = Vector3.Distance(objectPosition, lightPosition);
 
             // Calculate attenuation
-            Attenuation = 1.0f / (constantAttenuation + linearAttenuation * distance + quadraticAttenuation * distance * distance);
+            //Attenuation = 1.0f / (constantAttenuation + linearAttenuation * distance + quadraticAttenuation * distance * distance);
 
             //Material particleMaterial = particle.GetComponent<Renderer>().material;
 

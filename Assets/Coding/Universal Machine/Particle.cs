@@ -412,9 +412,9 @@ namespace UniversalMachine
             Vector3 juncture = Attune(Time.deltaTime);
 
             Vector3 applicant = new Vector3(
-                delta.x * ((destinate.x * juncture.x) / (vail.x / EnergeticResistance)),
-                delta.y * ((destinate.y * juncture.y) / (vail.y / EnergeticResistance)),
-                delta.z * ((destinate.z * juncture.z) / (vail.z / EnergeticResistance))
+                delta.x * (destinate.x * juncture.x), // / (vail.x / EnergeticResistance)),
+                delta.y * (destinate.y * juncture.y), // / (vail.y / EnergeticResistance)),
+                delta.z * (destinate.z * juncture.z) // / (vail.z / EnergeticResistance))
                 );
 
             applicant = Applicate(applicant);
@@ -429,7 +429,7 @@ namespace UniversalMachine
             IndiscernProperty(
                 delta,
                 new Vector3(applicant.x, applicant.y, applicant.z),
-                temporal - disruption,
+                temporal, // - disruption,
                 (v) => { Assertion = v; },
                 () => { return Assertion; });
 

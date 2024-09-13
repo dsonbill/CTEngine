@@ -290,7 +290,7 @@ PrefabInstance:
       objectReference: {fileID: 1896545962}
     - target: {fileID: 5873522039405176322, guid: 7d103ba37e276f046ba1501854c7df96, type: 3}
       propertyPath: ExistorClass
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5873522039405176322, guid: 7d103ba37e276f046ba1501854c7df96, type: 3}
       propertyPath: ContactPotential
@@ -302,7 +302,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5873522039405176322, guid: 7d103ba37e276f046ba1501854c7df96, type: 3}
       propertyPath: IdeologicalReasoning
-      value: 6.6
+      value: 0.57
       objectReference: {fileID: 0}
     - target: {fileID: 5873522039405176322, guid: 7d103ba37e276f046ba1501854c7df96, type: 3}
       propertyPath: AscriptiveFunctioning
@@ -319,6 +319,22 @@ PrefabInstance:
     - target: {fileID: 6503561564568539185, guid: 7d103ba37e276f046ba1501854c7df96, type: 3}
       propertyPath: QuantaPerSecond
       value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 6617285538811942126, guid: 7d103ba37e276f046ba1501854c7df96, type: 3}
+      propertyPath: Potential
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6617285538811942126, guid: 7d103ba37e276f046ba1501854c7df96, type: 3}
+      propertyPath: Attenuation
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6617285538811942126, guid: 7d103ba37e276f046ba1501854c7df96, type: 3}
+      propertyPath: linearAttenuation
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6617285538811942126, guid: 7d103ba37e276f046ba1501854c7df96, type: 3}
+      propertyPath: quadraticAttenuation
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7561575380312332407, guid: 7d103ba37e276f046ba1501854c7df96, type: 3}

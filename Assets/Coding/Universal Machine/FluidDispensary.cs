@@ -90,10 +90,12 @@ namespace UniversalMachine
             p.Project = ProjectionReceivance();
 
             // Initialize Ascription with a default value 
-            p.Ascription = new Vector4(1, 1, 1, 1);
+            p.Assertion = Vector4.one * 0.001f;
+            p.Ascription = new Vector4(1, 1, 1, 0.001f);
 
             // Initialize Depth with a default value
-            p.Depth = 1f; // Replace with a more meaningful calculation if necessary 
+            p.Depth = 0.1f; // Replace with a more meaningful calculation if necessary 
+            p.Reach = Vector4.one;
 
             // No initial force needed
             // p.AddForce(initialForce, Vector3.zero, Time.deltaTime);
