@@ -134,6 +134,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Existence
       objectReference: {fileID: 0}
+    - target: {fileID: 3260324186550135597, guid: 7d103ba37e276f046ba1501854c7df96, type: 3}
+      propertyPath: positionManager
+      value: 
+      objectReference: {fileID: 2092566513}
     - target: {fileID: 5352086411362114559, guid: 7d103ba37e276f046ba1501854c7df96, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -174,7 +178,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7561575380312332407, guid: 7d103ba37e276f046ba1501854c7df96, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -453,7 +458,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ConsolidationRadius: 3
   ConsolidationThreshold: 1.2
-  ConsolidationInterval: 6
+  ConsolidationInterval: 0.3
   ExpostulantAffair: 1
   Renderers: []
   WarpVectorThreshold: 0.8
@@ -485,7 +490,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LightSources: []
-  ParticlesPerUpdate: 0
+  ParticlesPerUpdate: 60
   Disc: {fileID: 902342452}
   Zone: {fileID: 902342453}
   Shackle: {fileID: 902342457}
