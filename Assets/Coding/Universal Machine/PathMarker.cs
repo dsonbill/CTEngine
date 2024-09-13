@@ -160,6 +160,12 @@ namespace UniversalMachine
             }
         }
 
+        void Update()
+        {
+            UpdateLineRenderer();
+
+        }
+
         public Vector3 Mul(Vector3 vector1, Vector3 vector2)
         {
             return new Vector3(

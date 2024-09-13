@@ -85,6 +85,10 @@ namespace UniversalMachine
                 // Get the ASCII value of the character
                 CharacterIndices.Add(characterText.text[0]);
 
+                // Add a ScaleFixer component to the character object
+                ScaleFixer scaler = characterObject.AddComponent<ScaleFixer>();
+                scaler.ScaleMultiplier = 0.1f; // Fine-tune this value
+
                 // Adjust angle and position for curved placement, taking into account text width
                 float angle = (i * characterArcLength / circumference) * 360f;
                 angle -= 90f; // Rotate 90 degrees to start at the top of the disc
