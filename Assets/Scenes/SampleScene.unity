@@ -200,15 +200,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5873522039405176322, guid: 7d103ba37e276f046ba1501854c7df96, type: 3}
       propertyPath: ContactPotential
-      value: -2.4
+      value: -20.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5873522039405176322, guid: 7d103ba37e276f046ba1501854c7df96, type: 3}
+      propertyPath: EmissionMultiplant
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 5873522039405176322, guid: 7d103ba37e276f046ba1501854c7df96, type: 3}
       propertyPath: IdeologicalReasoning
-      value: 0.35
+      value: 0.79
       objectReference: {fileID: 0}
     - target: {fileID: 5873522039405176322, guid: 7d103ba37e276f046ba1501854c7df96, type: 3}
       propertyPath: InitialHeightAboveGround
-      value: 0.2
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5873522039405176322, guid: 7d103ba37e276f046ba1501854c7df96, type: 3}
       propertyPath: AscriptiveFunctioningDecayRate
@@ -420,7 +424,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 38.4
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -611,8 +615,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4226a3e8b7049a040a73c70a44c815f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LightSources: []
-  ParticlesPerUpdate: 60
+  LightSources:
+  - {fileID: 1519979761}
+  ParticlesPerUpdate: 10
   Disc: {fileID: 902342452}
   Zone: {fileID: 902342453}
   Shackle: {fileID: 902342457}

@@ -63,7 +63,7 @@ namespace UniversalMachine
             };
 
             Well.Approach = () => { return (float)r.NextDouble(); };
-            Well.SafetyZone = () => { return Source.Diameter * 0.1f; };
+            Well.SafetyZone = () => { return Source.Diameter * 0.01f; };
             Well.Diameter = () => { return Zone.Diameter; };
 
             Well.IndexParticle = (p) => { UnitQuanta.Add(p); };
