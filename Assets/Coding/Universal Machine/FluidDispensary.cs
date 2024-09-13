@@ -70,7 +70,7 @@ namespace UniversalMachine
             if (rand == 1) posZ = -1;
 
             float x = (float)Diameter() / 2 * (float)r.NextDouble() * posX;
-            float y = SafetyZone() + (float)r.NextDouble();
+            float y = SafetyZone();
             float z = (float)Diameter() / 2 * (float)r.NextDouble() * posZ;
 
             // No initial force needed

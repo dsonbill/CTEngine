@@ -55,7 +55,6 @@ namespace UniversalMachine
 
         int Target()
         {
-            if (Simulands.Count == 1) return 0;
             int x = Simulands.Count > 0 ? r.Next(0, Simulands.Count - 1) : -1;
             if (PreviousParticles.Contains(x))
                 return Target();
