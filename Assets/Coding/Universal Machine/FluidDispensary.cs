@@ -69,9 +69,9 @@ namespace UniversalMachine
             rand = r.Next(0, 2);
             if (rand == 1) posZ = -1;
 
-            float x = (float)Diameter() / 2 * (float)r.NextDouble() * posX;
+            float x = (float)Diameter() / 2 * (float)r.NextDouble();
             float y = SafetyZone();
-            float z = (float)Diameter() / 2 * (float)r.NextDouble() * posZ;
+            float z = (float)Diameter() / 2 * (float)r.NextDouble();
 
             // No initial force needed
             // Vector3 initialForce = new Vector3(fx, fy, fz);

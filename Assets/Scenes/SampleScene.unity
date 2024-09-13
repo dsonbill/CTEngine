@@ -224,6 +224,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 647382235092553830, guid: 7d103ba37e276f046ba1501854c7df96, type: 3}
+      propertyPath: maxForce
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3254333218985897526, guid: 7d103ba37e276f046ba1501854c7df96, type: 3}
       propertyPath: m_Name
       value: Existence
@@ -232,6 +236,18 @@ PrefabInstance:
       propertyPath: positionManager
       value: 
       objectReference: {fileID: 2092566513}
+    - target: {fileID: 4671614928952313670, guid: 7d103ba37e276f046ba1501854c7df96, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4671614928952313670, guid: 7d103ba37e276f046ba1501854c7df96, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4671614928952313670, guid: 7d103ba37e276f046ba1501854c7df96, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.01
+      objectReference: {fileID: 0}
     - target: {fileID: 4697138309380868151, guid: 7d103ba37e276f046ba1501854c7df96, type: 3}
       propertyPath: Limit
       value: 25
@@ -294,15 +310,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5873522039405176322, guid: 7d103ba37e276f046ba1501854c7df96, type: 3}
       propertyPath: ContactPotential
-      value: -20.4
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 5873522039405176322, guid: 7d103ba37e276f046ba1501854c7df96, type: 3}
       propertyPath: EmissionMultiplant
-      value: 25
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5873522039405176322, guid: 7d103ba37e276f046ba1501854c7df96, type: 3}
       propertyPath: IdeologicalReasoning
-      value: 0.57
+      value: 1.13
       objectReference: {fileID: 0}
     - target: {fileID: 5873522039405176322, guid: 7d103ba37e276f046ba1501854c7df96, type: 3}
       propertyPath: AscriptiveFunctioning
@@ -318,7 +334,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6503561564568539185, guid: 7d103ba37e276f046ba1501854c7df96, type: 3}
       propertyPath: QuantaPerSecond
-      value: 40
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6617285538811942126, guid: 7d103ba37e276f046ba1501854c7df96, type: 3}
       propertyPath: Potential
@@ -448,7 +464,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 38.4
+  field of view: 26.991467
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -474,13 +490,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.095845714, y: 0, z: 0, w: 0.99539626}
   m_LocalPosition: {x: 0, y: 1, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 11, y: 0, z: 0}
 --- !u!114 &1519979761 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6617285538811942126, guid: 7d103ba37e276f046ba1501854c7df96, type: 3}
@@ -641,7 +657,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LightSources:
   - {fileID: 1519979761}
-  ParticlesPerUpdate: 10
+  ParticlesPerUpdate: 100
   Disc: {fileID: 902342452}
   Zone: {fileID: 902342453}
   Shackle: {fileID: 902342457}

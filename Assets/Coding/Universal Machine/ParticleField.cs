@@ -9,7 +9,7 @@ namespace UniversalMachine
     {
         List<Particle> Simulands;
 
-        List<int> PreviousParticles;
+        int PreviousParticles;
         int[] CurrentParticles;
 
         public List<LightSource> LightSources = new List<LightSource>();
@@ -50,16 +50,7 @@ namespace UniversalMachine
 
             Simulands = new List<Particle>();
             CurrentParticles = new int[0];
-            PreviousParticles = new List<int>();
-        }
-
-        int Target()
-        {
-            int x = Simulands.Count > 0 ? r.Next(0, Simulands.Count - 1) : -1;
-            if (PreviousParticles.Contains(x))
-                return Target();
-
-            return x;
+            PreviousParticles = 0;
         }
 
         // Update is called once per frame
@@ -72,25 +63,19 @@ namespace UniversalMachine
 
         }
 
-        void Update() {
-
-            CurrentParticles = new int[ParticlesPerUpdate];
-
+        void Update()
+        {
             int y;
             for (int i = 0; i < ParticlesPerUpdate; i++)
             {
-                y = Target();
+                y = PreviousParticles;
+                if (y < Simulands.Count) continue;
 
-                if (y == -1)
-                    return;
-
-                if (CurrentParticles.Contains(y))
-                    continue;
 
                 Disc.ApplyForce(Simulands[y]);
 
-                Zone.Friction(Simulands[y]);
-                Zone.ApplyForceAffair(Simulands[y]);
+                //Zone.Friction(Simulands[y]);
+                //Zone.ApplyForceAffair(Simulands[y]);
 
                 //if(Simulands[y].TimeSinceWarped >= Substrate.WarpVectorThreshold)
                 //    Substrate.UpdateWarpingVectors(Simulands[y]);
@@ -106,17 +91,21 @@ namespace UniversalMachine
 
                 //Shackle.Bind(Simulands[y]);
 
-                List<Particle> simulatedParticles = new List<Particle>();
-                foreach (int c in CurrentParticles) 
-                    simulatedParticles.Add(Simulands[c]);
+                
 
-                //if (simulatedParticles.Count - 1 > 0)
-                //    ForceExchanger.Exchange(simulatedParticles, Simulands[y]);
-
-                CurrentParticles[i] = y;
+                PreviousParticles++;
             }
 
-            PreviousParticles = new List<int>(CurrentParticles);
+            //List<Particle> simulatedParticles = new List<Particle>();
+            //for (int i = 0; i < ParticlesPerUpdate; i++)
+            //    simulatedParticles.Add(Simulands[i + PreviousParticles - ParticlesPerUpdate]);
+
+            //if (simulatedParticles.Count - 1 > 0)
+            //    ForceExchanger.Exchange(simulatedParticles, Simulands[y]);
+
+
+            if (PreviousParticles == Simulands.Count)
+                PreviousParticles = 0;
 
             
             

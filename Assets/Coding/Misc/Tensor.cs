@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tensor : MonoBehaviour
+public class Tensor
 {
     // The data for the tensor (stored as a multidimensional array)
     private float[][][] data;
@@ -18,13 +18,6 @@ public class Tensor : MonoBehaviour
 
     // The result tensor object
     private Tensor resultTensor;
-
-    private void Start()
-    {
-        // Create the result tensor
-        resultTensor = new GameObject("Result Tensor").AddComponent<Tensor>();
-        resultTensor.gameObject.transform.parent = transform;
-    }
 
     // Constructor
     public void Init(float[] dimension1, float[] dimension2, float[] dimension3, float[] dimension4)
@@ -90,6 +83,8 @@ public class Tensor : MonoBehaviour
             }
         }
 
+        resultTensor = new Tensor();
+
         // Create a new tensor with the same dimensions
         resultTensor.Init(
             new float[Dimensions[0]],
@@ -131,6 +126,8 @@ public class Tensor : MonoBehaviour
             }
         }
 
+        resultTensor = new Tensor();
+
         // Create a new tensor with the same dimensions
         resultTensor.Init(
             new float[Dimensions[0]],
@@ -158,6 +155,8 @@ public class Tensor : MonoBehaviour
     // Tensor Transpose
     public Tensor Transpose()
     {
+        resultTensor = new Tensor();
+
         // Create a new tensor with dimensions reversed
         resultTensor.Init(
             new float[Dimensions[3]],
@@ -199,6 +198,8 @@ public class Tensor : MonoBehaviour
             }
         }
 
+        resultTensor = new Tensor();
+
         // Create a new tensor with the same dimensions
         resultTensor.Init(
             new float[Dimensions[0]],
@@ -236,6 +237,8 @@ public class Tensor : MonoBehaviour
         int dim2 = Data[0].Length;
         int dim3 = Data[0][0].Length;
         int dim4 = tensor.Data.Length;
+
+        resultTensor = new Tensor();
 
         // Create the result tensor with the combined dimensions
         resultTensor.Init(

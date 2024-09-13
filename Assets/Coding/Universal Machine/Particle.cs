@@ -325,11 +325,11 @@ namespace UniversalMachine
 
             if (subject.x == float.NegativeInfinity)
             {
-                x = -float.MaxValue;
+                x = 0;
             }
             else if (subject.x == float.PositiveInfinity)
             {
-                x = float.MaxValue;
+                x = 0;
             }
             else if (float.IsNaN(subject.x))
             {
@@ -342,11 +342,11 @@ namespace UniversalMachine
 
             if (subject.y == float.NegativeInfinity)
             {
-                y = -float.MaxValue;
+                y = 0;
             }
             else if (subject.y == float.PositiveInfinity)
             {
-                y = float.MaxValue;
+                y = 0;
             }
             else if (float.IsNaN(subject.y))
             {
@@ -359,11 +359,11 @@ namespace UniversalMachine
             
             if (subject.z == float.NegativeInfinity)
             {
-                z = -float.MaxValue;
+                z = 0;
             }
             else if (subject.z == float.PositiveInfinity)
             {
-                z = float.MaxValue;
+                z = 0;
             }
             else if (float.IsNaN(subject.z))
             {
@@ -376,11 +376,11 @@ namespace UniversalMachine
 
             if (subject.w == float.NegativeInfinity)
             {
-                w = -float.MaxValue;
+                w = 0;
             }
             else if (subject.w == float.PositiveInfinity)
             {
-                w = float.MaxValue;
+                w = 0;
             }
             else if (float.IsNaN(subject.w))
             {
@@ -754,7 +754,6 @@ namespace UniversalMachine
                 totalProjection += projection;
             }
             Projections.Clear(); // Clear the list after applying
-
             Delta += totalProjection;  // Add the combined projection to Delta
         }
 

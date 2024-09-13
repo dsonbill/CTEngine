@@ -87,7 +87,7 @@ public class ParticlePositionManager : MonoBehaviour
                 if (distance > 0.001f)
                 {
                     // Calculate the angle between the particle's Delta and the warp vector direction
-                    float angle = Vector3.Angle(particle.Delta, sortedWarpVectors[i].Direction);
+                    float angle = Vector3.Angle(particle.transform.position, sortedWarpVectors[i].Direction);
 
                     //Debug.Log($"Particle Delta: {particle.Delta}");
                     //Debug.Log($"Angle: {angle}");
