@@ -398,7 +398,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5873522039405176322, guid: 7d103ba37e276f046ba1501854c7df96, type: 3}
       propertyPath: IdeologicalReasoning
-      value: 1.13
+      value: 5.48
       objectReference: {fileID: 0}
     - target: {fileID: 5873522039405176322, guid: 7d103ba37e276f046ba1501854c7df96, type: 3}
       propertyPath: AscriptiveFunctioning
@@ -414,7 +414,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5873522039405176322, guid: 7d103ba37e276f046ba1501854c7df96, type: 3}
       propertyPath: AscriptiveFunctioningDecayRate
-      value: 0.1
+      value: 0.001
       objectReference: {fileID: 0}
     - target: {fileID: 6503561564568539185, guid: 7d103ba37e276f046ba1501854c7df96, type: 3}
       propertyPath: QuantaPerSecond
