@@ -703,12 +703,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1482911558}
-  speed: 5
-  distance: 5
-  minDistance: 1
-  maxDistance: 10
+  speed: 0.86
+  distance: 9
+  minDistance: 8
+  maxDistance: 17
   yLimit: 80
-  offset: {x: 0, y: 3.2, z: -10}
+  offset: {x: 0, y: 0, z: 0}
   floorLayer:
     serializedVersion: 2
     m_Bits: 64

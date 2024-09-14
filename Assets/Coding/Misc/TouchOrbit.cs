@@ -53,7 +53,7 @@ public class TouchOrbit : MonoBehaviour
         // Apply rotation and zoom
         transform.eulerAngles = currentRotation;
         transform.position = target.position + offset + transform.forward * zoom;
-        transform.lookat(target.position + offset);
+        transform.LookAt(target.position + offset);
 
         // Prevent going through the floor
         // Raycast downwards from the camera position
