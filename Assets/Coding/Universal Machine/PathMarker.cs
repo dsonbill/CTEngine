@@ -25,7 +25,7 @@ namespace UniversalMachine
         private float lastConsolidationTime = 0f;
         public float consolidationInterval = 5f; // Consolidate every 5 seconds
 
-        public Transform Quanta;
+        public Transform Parent;
 
         // A single path segment
         public class Mark
@@ -75,8 +75,8 @@ namespace UniversalMachine
                 offset += 2;
 
                 // Set the position of the line renderer
-                lineRenderer.SetPosition(x, Quanta.TransformPoint(Path[i].Position));
-                lineRenderer.SetPosition(x + 1, Quanta.TransformPoint(Path[i].Position + Path[i].Direction * Path[i].Energy.magnitude));
+                lineRenderer.SetPosition(x, Parent.TransformPoint(Path[i].Position));
+                lineRenderer.SetPosition(x + 1, Parent.TransformPoint(Path[i].Position + Path[i].Direction * Path[i].Energy.magnitude));
 
                 // Energy Visualization (Choose ONE option)
                 // Option 1: Color

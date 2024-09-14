@@ -237,8 +237,24 @@ PrefabInstance:
       value: 26
       objectReference: {fileID: 0}
     - target: {fileID: 791383415975450017, guid: 7d103ba37e276f046ba1501854c7df96, type: 3}
+      propertyPath: m_UseWorldSpace
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 791383415975450017, guid: 7d103ba37e276f046ba1501854c7df96, type: 3}
+      propertyPath: m_Parameters.alignment
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 791383415975450017, guid: 7d103ba37e276f046ba1501854c7df96, type: 3}
+      propertyPath: m_Parameters.textureMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 791383415975450017, guid: 7d103ba37e276f046ba1501854c7df96, type: 3}
       propertyPath: m_Parameters.widthMultiplier
       value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 791383415975450017, guid: 7d103ba37e276f046ba1501854c7df96, type: 3}
+      propertyPath: m_Parameters.generateLightingData
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2261505860260044970, guid: 7d103ba37e276f046ba1501854c7df96, type: 3}
       propertyPath: m_Enabled
@@ -324,6 +340,10 @@ PrefabInstance:
       propertyPath: Limit
       value: 75
       objectReference: {fileID: 0}
+    - target: {fileID: 4697138309380868151, guid: 7d103ba37e276f046ba1501854c7df96, type: 3}
+      propertyPath: Parent
+      value: 
+      objectReference: {fileID: 1133342922}
     - target: {fileID: 4697138309380868151, guid: 7d103ba37e276f046ba1501854c7df96, type: 3}
       propertyPath: Quanta
       value: 
