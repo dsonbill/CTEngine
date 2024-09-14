@@ -1,21 +1,20 @@
-
+using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.EnhancedTouch;
 
-public class TouchOrbit : UnityEngine.MonoBehaviour
+public class TouchOrbit : MonoBehaviour
 {
-    public UnityEngine.Transform target; // The object to orbit around
+    public Transform target; // The object to orbit around
     public float speed = 5f; // Rotation speed
     public float distance = 5f; // Distance from the target
     public float minDistance = 1f; // Minimum distance from the target
     public float maxDistance = 10f; // Maximum distance from the target
     public float yLimit = 80f; // Y-axis rotation limit
-    public UnityEngine.Vector3 offset; // Offset from the target's position
-    public UnityEngine.LayerMask floorLayer; // Layer mask for the floor
+    public Vector3 offset; // Offset from the target's position
+    public LayerMask floorLayer; // Layer mask for the floor
 
-    private UnityEngine.Vector3 startTouchPosition;
-    private UnityEngine.Vector3 endTouchPosition;
-    private UnityEngine.Vector3 currentRotation;
+    private Vector2 touchStart;
+    private Vector2 touchEnd;
+    private Vector3 currentRotation;
     private float zoom;
 
     void Start()
@@ -29,30 +28,24 @@ public class TouchOrbit : UnityEngine.MonoBehaviour
     void Update()
     {
         // Handle touch input
-        if (EnhancedTouchSupport.enabled)
+        if (Touchscreen.current.primaryTouch.phase == TouchPhase.Began)
         {
-            foreach (Touch touch in Touch.activeTouches)
-            {
-                if (touch.phase == UnityEngine.InputSystem.TouchPhase.Began)
-                {
-                    startTouchPosition = touch.screenPosition;
-                }
-                else if (touch.phase == UnityEngine.InputSystem.TouchPhase.Moved)
-                {
-                    endTouchPosition = touch.screenPosition;
-                    HandleRotation();
-                }
-                else if (touch.phase == UnityEngine.InputSystem.TouchPhase.Ended)
-                {
-                    // Reset touch positions
-                    startTouchPosition = UnityEngine.Vector3.zero;
-                    endTouchPosition = UnityEngine.Vector3.zero;
-                }
-            }
+            touchStart = Touchscreen.current.primaryTouch.position.ReadValue();
+        }
+        else if (Touchscreen.current.primaryTouch.phase == TouchPhase.Moved)
+        {
+            touchEnd = Touchscreen.current.primaryTouch.position.ReadValue();
+            HandleRotation();
+        }
+        else if (Touchscreen.current.primaryTouch.phase == TouchPhase.Ended)
+        {
+            // Reset touch positions
+            touchStart = Vector2.zero;
+            touchEnd = Vector2.zero;
         }
 
         // Handle zoom
-        if ( Touchscreen.current.touches.Count == 2)
+        if (Touchscreen.current.touches.Count == 2 && Touchscreen.current.primaryTouch.phase == TouchPhase.Moved)
         {
             HandleZoom();
         }
@@ -63,11 +56,11 @@ public class TouchOrbit : UnityEngine.MonoBehaviour
 
         // Prevent going through the floor
         // Raycast downwards from the camera position
-        UnityEngine.RaycastHit hit;
-        if (UnityEngine.Physics.Raycast(transform.position, UnityEngine.Vector3.down, out hit, float.MaxValue, floorLayer))
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, float.MaxValue, floorLayer))
         {
             // Adjust camera position to be above the floor
-            transform.position = new UnityEngine.Vector3(transform.position.x, hit.point.y + 1f, transform.position.z);
+            transform.position = new Vector3(transform.position.x, hit.point.y + 1f, transform.position.z);
         }
     }
 
@@ -75,18 +68,28 @@ public class TouchOrbit : UnityEngine.MonoBehaviour
     private void HandleRotation()
     {
         // Calculate delta touch position
-        UnityEngine.Vector3 delta = endTouchPosition - startTouchPosition;
+        Vector2 delta = touchEnd - touchStart;
 
         // Apply rotation
-        currentRotation.x += delta.y * speed * UnityEngine.Time.deltaTime;
-        currentRotation.y += delta.x * speed * UnityEngine.Time.deltaTime;
+        currentRotation.x += delta.y * speed * Time.deltaTime;
+        currentRotation.y += delta.x * speed * Time.deltaTime;
 
         // Clamp Y-axis rotation
-        currentRotation.x = UnityEngine.Mathf.Clamp(currentRotation.x, -yLimit, yLimit);
+        currentRotation.x = Mathf.Clamp(currentRotation.x, -yLimit, yLimit);
+
+        // Reset touch start position
+        touchStart = touchEnd;
     }
 
     // Handle camera zoom
     private void HandleZoom()
     {
+        // Calculate distance between touch points
+        Vector2 touch0 = Touchscreen.current.touches[0].screenPosition.ReadValue();
+        Vector2 touch1 = Touchscreen.current.touches[1].screenPosition.ReadValue();
+        float distanceBetweenTouches = Vector2.Distance(touch0, touch1);
+
+        // Adjust zoom based on touch distance
+        zoom = Mathf.Clamp(zoom - (distanceBetweenTouches - zoom) * speed * Time.deltaTime, minDistance, maxDistance);
     }
 }
