@@ -14,7 +14,7 @@ namespace UniversalMachine
         public float InfluenceStrength = 1.0f; // Strength of the force applied by the path
 
         // The line renderer used to draw the path
-        public LineRenderer lineRenderer;     // Assign in Inspector
+        public GameObject Line;                       // Assign in Inspector
         public Gradient energyGradient;       // Assign a gradient in Inspector
         //public float energyLineWidthFactor = 2f; // Adjust this factor as needed
 
@@ -57,34 +57,25 @@ namespace UniversalMachine
             }
         }
 
-        void Start()
-        {
-            // Initialize Line Renderer
-            if (lineRenderer == null)
-            {
-                lineRenderer = gameObject.AddComponent<LineRenderer>();
-            }
-            lineRenderer.positionCount = 0;
-        }
         void UpdateLineRenderer()
         {
             // Update the line renderer with the path segments
-            lineRenderer.positionCount = Path.Count * 2;
-            int offset = 0;
             for (int i = 0; i < Path.Count; i++)
             {
-                int x = offset;
-                offset += 2;
+                LineRenderer LR = GameObject.Instantiate(Line).GetComponent<LineRenderer>();
+                LR.gameObject.transform.SetParent(transform);
+
+                LR.positionCount = 2;
 
                 // Set the position of the line renderer
-                lineRenderer.SetPosition(x, Parent.TransformPoint(Path[i].Position));
-                lineRenderer.SetPosition(x + 1, Parent.TransformPoint(Path[i].Distance * Path[i].Direction));
+                LR.SetPosition(0, Parent.TransformPoint(Path[i].Position));
+                LR.SetPosition(1, Parent.TransformPoint(Path[i].Distance * Path[i].Direction));
 
                 // Energy Visualization (Choose ONE option)
                 // Option 1: Color
                 float energyMagnitude = Path[i].Energy.magnitude;
-                lineRenderer.startColor = energyGradient.Evaluate(energyMagnitude);
-                lineRenderer.endColor = energyGradient.Evaluate(energyMagnitude);
+                LR.startColor = energyGradient.Evaluate(0);
+                LR.endColor = energyGradient.Evaluate(energyMagnitude);
 
                 // Option 2: Line Width
                 // float energyLineWidth = energyMagnitude * energyLineWidthFactor;
