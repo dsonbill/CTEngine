@@ -162,7 +162,7 @@ namespace UniversalMachine
 
         void Update()
         {
-            UpdateLineRenderer();
+            //UpdateLineRenderer();
 
         }
 
