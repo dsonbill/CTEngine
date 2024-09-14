@@ -52,7 +52,6 @@ public class TouchOrbit : MonoBehaviour
 
         // Apply rotation and zoom
         transform.eulerAngles = currentRotation;
-        transform.position = target.position + offset + transform.forward * zoom;
         transform.LookAt(target.position + offset);
 
         // Prevent going through the floor
@@ -78,6 +77,8 @@ public class TouchOrbit : MonoBehaviour
         // Clamp Y-axis rotation
         currentRotation.x = Mathf.Clamp(currentRotation.x, -yLimit, yLimit);
 
+        transform.position = target.position + offset + Quaternion.Euler(currentRotation) * Vector3.forward * zoom;
+        
         // Reset touch start position
         touchStart = touchEnd;
     }
