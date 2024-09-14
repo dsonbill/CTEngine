@@ -32,6 +32,7 @@ namespace UniversalMachine
         {
             public Vector3 Position;
             public Vector3 Direction;
+            public float Distance;
             public Vector3 Energy;
 
             public Vector3 Proceed(Vector3 position, Vector3 destination, Vector3 energy)
@@ -44,6 +45,7 @@ namespace UniversalMachine
 
                 // Calculate the distance between the particle path and the path segment
                 float distance = Vector3.Distance(a, Direction);
+                Distance = distance;
 
                 // Calculate the force based on the angle and the magnitude of the direction
                 float force = Direction.magnitude / distance / angle * Energy.magnitude * Particle.EnergeticResistance;
@@ -76,7 +78,7 @@ namespace UniversalMachine
 
                 // Set the position of the line renderer
                 lineRenderer.SetPosition(x, Parent.InverseTransformPoint(Path[i].Position));
-                lineRenderer.SetPosition(x + 1, Parent.InverseTransformPoint(Path[i].Position + Path[i].Direction));
+                lineRenderer.SetPosition(x + 1, Parent.InverseTransformPoint(Path[i].Distance * Path[i].Direction));
 
                 // Energy Visualization (Choose ONE option)
                 // Option 1: Color
