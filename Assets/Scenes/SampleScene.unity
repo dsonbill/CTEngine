@@ -346,7 +346,7 @@ PrefabInstance:
       objectReference: {fileID: 1195626182}
     - target: {fileID: 4697138309380868151, guid: 7d103ba37e276f046ba1501854c7df96, type: 3}
       propertyPath: Limit
-      value: 75
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 4697138309380868151, guid: 7d103ba37e276f046ba1501854c7df96, type: 3}
       propertyPath: Parent
@@ -363,6 +363,26 @@ PrefabInstance:
     - target: {fileID: 4697138309380868151, guid: 7d103ba37e276f046ba1501854c7df96, type: 3}
       propertyPath: lineRenderer
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4697138309380868151, guid: 7d103ba37e276f046ba1501854c7df96, type: 3}
+      propertyPath: InfluenceRadius
+      value: 0.13
+      objectReference: {fileID: 0}
+    - target: {fileID: 4697138309380868151, guid: 7d103ba37e276f046ba1501854c7df96, type: 3}
+      propertyPath: InfluenceStrength
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4697138309380868151, guid: 7d103ba37e276f046ba1501854c7df96, type: 3}
+      propertyPath: consolidationInterval
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4697138309380868151, guid: 7d103ba37e276f046ba1501854c7df96, type: 3}
+      propertyPath: energyGradient.key0.a
+      value: 0.30980393
+      objectReference: {fileID: 0}
+    - target: {fileID: 4697138309380868151, guid: 7d103ba37e276f046ba1501854c7df96, type: 3}
+      propertyPath: energyGradient.key1.a
+      value: 0.24313726
       objectReference: {fileID: 0}
     - target: {fileID: 5352086411362114559, guid: 7d103ba37e276f046ba1501854c7df96, type: 3}
       propertyPath: m_LocalPosition.x
