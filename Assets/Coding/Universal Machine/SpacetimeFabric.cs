@@ -89,7 +89,7 @@ namespace UniversalMachine
             // Create a tensor for the warp vectors
             Tensor warpTensor = new Tensor();
             IEnumerable<float[]> warpVectorsSelection = WarpVectors.Select(warpVector => new float[3] { warpVector.Direction.x, warpVector.Direction.y, warpVector.Direction.z });
-            Debug.Log(warpVectorsSelection.ToArray());
+            
             warpTensor.Init(
                 // Get the x, y, and z components of the warp vectors
                 warpVectorsSelection.ToArray()[0],
