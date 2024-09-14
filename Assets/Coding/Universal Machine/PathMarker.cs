@@ -68,8 +68,8 @@ namespace UniversalMachine
                 LR.positionCount = 2;
 
                 // Set the position of the line renderer
-                LR.SetPosition(0, Parent.TransformPoint(Path[i].Position));
-                LR.SetPosition(1, Parent.TransformPoint(Path[i].Distance * Path[i].Direction));
+                LR.SetPosition(0, (Path[i].Position));
+                LR.SetPosition(1, (Path[i].Distance * Path[i].Direction));
 
                 // Energy Visualization (Choose ONE option)
                 // Option 1: Color
