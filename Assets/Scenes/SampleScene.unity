@@ -422,7 +422,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5873522039405176322, guid: 7d103ba37e276f046ba1501854c7df96, type: 3}
       propertyPath: AscriptiveFunctioning
-      value: 3.85
+      value: 1.29
       objectReference: {fileID: 0}
     - target: {fileID: 5873522039405176322, guid: 7d103ba37e276f046ba1501854c7df96, type: 3}
       propertyPath: InitialHeightAboveGround
