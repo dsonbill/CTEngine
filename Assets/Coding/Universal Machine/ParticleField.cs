@@ -69,18 +69,18 @@ namespace UniversalMachine
             for (int i = 0; i < ParticlesPerUpdate; i++)
             {
                 y = PreviousParticles;
-                if (y < Simulands.Count) continue;
+                if (y >= Simulands.Count) continue;
 
 
                 Disc.ApplyForce(Simulands[y]);
 
-                //Zone.Friction(Simulands[y]);
-                //Zone.ApplyForceAffair(Simulands[y]);
+                Zone.Friction(Simulands[y]);
+                Zone.ApplyForceAffair(Simulands[y]);
 
-                //if(Simulands[y].TimeSinceWarped >= Substrate.WarpVectorThreshold)
-                //    Substrate.UpdateWarpingVectors(Simulands[y]);
+                if(Simulands[y].TimeSinceWarped >= Substrate.WarpVectorThreshold)
+                    Substrate.UpdateWarpingVectors(Simulands[y]);
 
-                //Substrate.CalculateWarpedPosition(Simulands[y]);
+                Substrate.CalculateWarpedPosition(Simulands[y]);
 
                 //Substrate.UpdateParticleShaderProperties(Simulands[y].material);
 

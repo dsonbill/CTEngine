@@ -166,7 +166,7 @@ namespace UniversalMachine
 
             particle.AddForce(force, Vector3.zero, Time.deltaTime);
 
-            //FutureContacts.Add(particle);
+            FutureContacts.Add(particle);
         }
 
         void ContactQuantum()

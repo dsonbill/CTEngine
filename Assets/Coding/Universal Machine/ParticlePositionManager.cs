@@ -46,12 +46,11 @@ public class ParticlePositionManager : MonoBehaviour
             forceDelta *= lightSource.Intensity * lightSource.Potential * lightSource.Attenuation / (distToLight * distToLight);
 
             // Add the torque to the force
-            Vector3 torque = Mul(Vector3.Cross(lightDir, particle.Velocity) * lightSource.TorqueStrength, lightSource.CalculateTorque(particle));
-            forceDelta = Mul(forceDelta, torque); // Apply the torque to the force
-
+            //Vector3 torque = Mul(Vector3.Cross(lightDir, particle.Velocity) * lightSource.TorqueStrength, lightSource.CalculateTorque(particle));
+            //forceDelta = Mul(forceDelta, torque); // Apply the torque to the force
+            Debug.Log(forceDelta);
             // Apply the force to the particle's position
-            Vector3 tryMeFaggot = particle.Applicate(forceDelta);
-            particle.transform.position += tryMeFaggot;
+            particle.transform.localPosition += forceDelta;
 
             // Reset Delta for the next frame
             particle.Delta = Vector3.zero;
@@ -99,7 +98,7 @@ public class ParticlePositionManager : MonoBehaviour
 
             // Update the particle's position (assuming you're not using a Rigidbody)
             Vector3 applicated = particle.Applicate(warpedPosition);
-            particle.Delta += applicated;
+            //particle.Delta += applicated;
         }
     }
 

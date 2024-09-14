@@ -7,6 +7,8 @@ namespace UniversalMachine
 {
     public class EnscriptionLimit : MonoBehaviour
     {
+        public Transform Base;
+
         public List<Particle> Subjects = new List<Particle>();
         public Queue<Particle> Queue = new Queue<Particle>();
 
@@ -23,7 +25,7 @@ namespace UniversalMachine
 
             foreach (Particle p in Subjects)
             {
-                if (p.transform.position.y >= transform.position.y)
+                if (p.transform.position.y >= transform.position.y || p.transform.position.y <= Base.position.y)
                 {
                     DestroyParticle?.Invoke(p);
                     RemovalQueue.Enqueue(p);

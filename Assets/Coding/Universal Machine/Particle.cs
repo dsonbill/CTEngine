@@ -1,9 +1,12 @@
 
 using System;
 using System.Collections.Generic;
+using System.Xml;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
+using static UnityEngine.PlayerLoop.PreUpdate;
 
 namespace UniversalMachine
 {
@@ -11,7 +14,7 @@ namespace UniversalMachine
     {
         public const float Nearest = 1.4013e-25f;
         public const float EnergeticResistance = 4f;
-        public const float FactualRestraint = 1f;
+        public const float FactualRestraint = 4f;
         public const float KineticEasing = 10f;
         public const float ContactWindow = 1f;
 
@@ -209,19 +212,22 @@ namespace UniversalMachine
             //Debug.Log("Total Discernment: " + totalDiscernment);
             //Debug.Log("Discernment Ratio: " + discernmentRatio);
 
+            contactForce = Applicate(contactForce);
+            point = Applicate(point);
+
             Vector3 pf = Conduct(temporal);
             Conductance = new Vector4(
                 pf.x + contactForce.x,
                 pf.y + contactForce.y,
                 pf.z + contactForce.z,
-                temporal);
+                Conductance.w * discernmentRatio);
 
             Vector3 pt = Attune(temporal);
             Attunement = new Vector4(
                 pt.x + point.x,
                 pt.y + point.y,
                 pt.z + point.z,
-                temporal);
+                Attunement.w * discernmentRatio);
         }
 
         
@@ -406,30 +412,35 @@ namespace UniversalMachine
 
         public void Simulate(float temporal)
         {
-            Vector3 delta = Assert(Time.deltaTime);
-            Vector3 vail = Ascribe(Time.deltaTime);
-            Vector3 destinate = Conduct(Time.deltaTime);
-            Vector3 juncture = Attune(Time.deltaTime);
+            Vector3 delta = Assert(temporal);
+            Vector3 vail = Ascribe(temporal);
+            Vector3 destinate = Conduct(temporal);
+            Vector3 juncture = Attune(temporal);
 
             Vector3 applicant = new Vector3(
-                delta.x * (destinate.x * juncture.x), // / (vail.x / EnergeticResistance)),
-                delta.y * (destinate.y * juncture.y), // / (vail.y / EnergeticResistance)),
-                delta.z * (destinate.z * juncture.z) // / (vail.z / EnergeticResistance))
+                (destinate.x * juncture.x), // / (vail.x / EnergeticResistance)),
+                (destinate.y * juncture.y), // / (vail.y / EnergeticResistance)),
+                (destinate.z * juncture.z) // / (vail.z / EnergeticResistance))
                 );
 
             applicant = Applicate(applicant);
 
-            Vector3 projection = Project(delta, applicant, vail);
+            Vector3 projection = Project(delta, delta * applicant.magnitude, vail);
             projection = Applicate(projection);
 
             Projections.Add(projection);
 
-            float disruption = temporal / Mathf.Abs(delta.magnitude) * Mathf.Abs(projection.magnitude);
+            IndiscernProperty(
+                vail,
+                projection,
+                temporal,
+                (v) => { Ascription = v; },
+                () => { return Ascription; });
 
             IndiscernProperty(
                 delta,
-                new Vector3(applicant.x, applicant.y, applicant.z),
-                temporal, // - disruption,
+                projection,
+                temporal,
                 (v) => { Assertion = v; },
                 () => { return Assertion; });
 
@@ -734,6 +745,11 @@ namespace UniversalMachine
         void Update()
         {
             TimeSinceWarped += Time.deltaTime;
+            lastUpdate += Time.deltaTime;
+
+            // This is where the magic happens
+            Simulate(Destination);
+            Destination = 0;
 
             //material.SetFloat("_ParticleDepth", Depth);
             //material.SetFloat("_ParticleReach", Reach.magnitude);
@@ -741,11 +757,13 @@ namespace UniversalMachine
             //material.SetVector("_ParticleDelta", Delta); // New line for Delta
         }
 
+        float lastUpdate = 0;
+        
         void FixedUpdate()
         {
-            // This is where the magic happens
-            Simulate(Destination);
-            Destination = 0;
+            if (lastUpdate < 0.16f)
+                return;
+            lastUpdate = 0;
 
             // Apply projections to the particle's Delta
             Vector3 totalProjection = Vector3.zero;

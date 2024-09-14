@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace UniversalMachine
@@ -34,7 +33,7 @@ namespace UniversalMachine
         public Vector3 CalculateTorque(Particle particle)
         {
             // Calculate distance and direction from light source to particle
-            Vector3 directionToParticle = particle.transform.position - transform.position;
+            Vector3 directionToParticle = particle.transform.localPosition - transform.position;
             float distanceToParticle = directionToParticle.magnitude;
 
             // Normalize the direction vector

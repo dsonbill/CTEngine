@@ -69,9 +69,9 @@ namespace UniversalMachine
             rand = r.Next(0, 2);
             if (rand == 1) posZ = -1;
 
-            float x = (float)Diameter() / 2 * (float)r.NextDouble();
-            float y = SafetyZone();
-            float z = (float)Diameter() / 2 * (float)r.NextDouble();
+            float x = 0;
+            float y = 0; // SafetyZone();
+            float z = 0;
 
             // No initial force needed
             // Vector3 initialForce = new Vector3(fx, fy, fz);
@@ -82,7 +82,7 @@ namespace UniversalMachine
 
             GameObject particle = Instantiate(Prefabricant, initialPosition, Quaternion.identity);
             particle.transform.parent = QuantaTree.transform;
-            particle.transform.position = initialPosition;
+            particle.transform.localPosition = initialPosition;
             particle.SetActive(true);
 
             Particle p = particle.GetComponent<Particle>();
@@ -94,7 +94,7 @@ namespace UniversalMachine
             p.Ascription = new Vector4(1, 1, 1, 0.001f);
 
             // Initialize Depth with a default value
-            p.Depth = 0.1f; // Replace with a more meaningful calculation if necessary 
+            p.Depth = 0.4f; // Replace with a more meaningful calculation if necessary 
             p.Reach = Vector4.one;
 
             // No initial force needed
