@@ -76,7 +76,7 @@ namespace UniversalMachine
 
                 // Set the position of the line renderer
                 lineRenderer.SetPosition(x, Parent.TransformPoint(Path[i].Position));
-                lineRenderer.SetPosition(x + 1, Parent.TransformPoint(Path[i].Position + Path[i].Direction * Path[i].Energy.magnitude));
+                lineRenderer.SetPosition(x + 1, Parent.TransformPoint(Path[i].Position + Path[i].Direction));
 
                 // Energy Visualization (Choose ONE option)
                 // Option 1: Color
