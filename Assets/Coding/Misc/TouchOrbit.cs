@@ -28,16 +28,16 @@ public class TouchOrbit : MonoBehaviour
     void Update()
     {
         // Handle touch input
-        if (Touchscreen.current.primaryTouch.phase == TouchPhase.Began)
+        if (Touchscreen.current.primaryTouch.phase.ReadValue() == UnityEngine.InputSystem.TouchPhase.Began)
         {
             touchStart = Touchscreen.current.primaryTouch.position.ReadValue();
         }
-        else if (Touchscreen.current.primaryTouch.phase == TouchPhase.Moved)
+        else if (Touchscreen.current.primaryTouch.phase.ReadValue() == UnityEngine.InputSystem.TouchPhase.Moved)
         {
             touchEnd = Touchscreen.current.primaryTouch.position.ReadValue();
             HandleRotation();
         }
-        else if (Touchscreen.current.primaryTouch.phase == TouchPhase.Ended)
+        else if (Touchscreen.current.primaryTouch.phase.ReadValue() == UnityEngine.InputSystem.TouchPhase.Ended)
         {
             // Reset touch positions
             touchStart = Vector2.zero;
@@ -45,7 +45,7 @@ public class TouchOrbit : MonoBehaviour
         }
 
         // Handle zoom
-        if (Touchscreen.current.touches.Count == 2 && Touchscreen.current.primaryTouch.phase == TouchPhase.Moved)
+        if (Touchscreen.current.touches.Count == 2 && Touchscreen.current.primaryTouch.phase.ReadValue() == UnityEngine.InputSystem.TouchPhase.Moved)
         {
             HandleZoom();
         }
@@ -85,8 +85,8 @@ public class TouchOrbit : MonoBehaviour
     private void HandleZoom()
     {
         // Calculate distance between touch points
-        Vector2 touch0 = Touchscreen.current.touches[0].screenPosition.ReadValue();
-        Vector2 touch1 = Touchscreen.current.touches[1].screenPosition.ReadValue();
+        Vector2 touch0 = Touchscreen.current.touches[0].position.ReadValue();
+        Vector2 touch1 = Touchscreen.current.touches[1].position.ReadValue();
         float distanceBetweenTouches = Vector2.Distance(touch0, touch1);
 
         // Adjust zoom based on touch distance
