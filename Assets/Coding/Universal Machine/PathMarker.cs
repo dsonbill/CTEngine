@@ -77,8 +77,8 @@ namespace UniversalMachine
                 offset += 2;
 
                 // Set the position of the line renderer
-                lineRenderer.SetPosition(x, Parent.InverseTransformPoint(Path[i].Position));
-                lineRenderer.SetPosition(x + 1, Parent.InverseTransformPoint(Path[i].Distance * Path[i].Direction));
+                lineRenderer.SetPosition(x, Parent.TransformPoint(Path[i].Position));
+                lineRenderer.SetPosition(x + 1, Parent.TransformPoint(Path[i].Distance * Path[i].Direction));
 
                 // Energy Visualization (Choose ONE option)
                 // Option 1: Color
