@@ -708,7 +708,7 @@ MonoBehaviour:
   minDistance: 8
   maxDistance: 17
   yLimit: 80
-  offset: {x: 0, y: 0, z: 0}
+  offset: {x: 0, y: 3.2, z: -9.74}
   floorLayer:
     serializedVersion: 2
     m_Bits: 64
