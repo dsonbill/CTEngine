@@ -230,7 +230,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 647382235092553830, guid: 7d103ba37e276f046ba1501854c7df96, type: 3}
       propertyPath: Enscription
-      value: Contact    Zone
+      value: Contact Zone
       objectReference: {fileID: 0}
     - target: {fileID: 647382235092553830, guid: 7d103ba37e276f046ba1501854c7df96, type: 3}
       propertyPath: TorqueStrength
