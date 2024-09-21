@@ -48,8 +48,8 @@ namespace UniversalMachine
             // Set axis of force application
             Flow = Disc.up + Disc.right;
         }
-
-        void CreateCharacterObjects()
+        
+        public void CreateCharacterObjects()
         {
             char[] characters = Enscription.ToCharArray();
             float circumference = Mathf.PI * Diameter;
@@ -57,6 +57,11 @@ namespace UniversalMachine
 
             // Reverse the order of the characters so they appear in the correct order on the disc
             Array.Reverse(characters);
+
+            if (GameObject.Find("TextParent") != null)
+            {
+                GameObject.Destroy(GameObject.Find("TextParent"));
+            }
 
             // Create a parent object for the text objects
             GameObject textParent = new GameObject("TextParent");
