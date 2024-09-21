@@ -97,14 +97,6 @@ public class SettingsPanel : MonoBehaviour
         UpdateEntry();
 
 
-        // Add elements to the panel
-        settingsPanel.Add(entryNameLabel);
-        settingsPanel.Add(previousEntryButton);
-        settingsPanel.Add(nextEntryButton);
-        settingsPanel.Add(entryInput);
-        settingsPanel.Add(setEntryButton);
-
-
         // Add the panel to the root
         root.Add(settingsPanel);
         // ... (Your existing code) ...
