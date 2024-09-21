@@ -107,6 +107,25 @@ public class SettingsPanel : MonoBehaviour
 
         // Add the panel to the root
         root.Add(settingsPanel);
+        // ... (Your existing code) ...
+
+        // Create a container for the settings elements
+        VisualElement contentContainer = new VisualElement();
+
+        // Add UI elements to the container
+        contentContainer.Add(entryNameLabel);
+        contentContainer.Add(previousEntryButton);
+        contentContainer.Add(nextEntryButton);
+        contentContainer.Add(entryInput);
+        contentContainer.Add(setEntryButton);
+
+        // Move the container down
+        contentContainer.style.top = 50; 
+
+        // Add the container to the settings panel
+        settingsPanel.Add(contentContainer); 
+
+        // ... (Your existing code) ...
     }
 
 
