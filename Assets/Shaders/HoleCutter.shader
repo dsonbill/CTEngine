@@ -3,21 +3,47 @@ Shader "Custom/HoleCutter" {
         _MainTex ("Texture", 2D) = "white" {}
     }
     SubShader {
-        Tags { "RenderType"="Opaque" "RenderPipeline" = "HDRenderPipeline" }
+        Tags { "RenderType"="Opaque" } // "Opaque" is correct for this shader
         LOD 100
 
-        
-
-        // Main Pass (Samples the cutout texture and discards fragments)
+        // Depth Texture Pass (Renders only to the depth buffer)
         Pass {
             HLSLPROGRAM
-            #pragma target 2.5 // Essential for HDRP
             #pragma vertex vert
             #pragma fragment frag
 
-            #include "UnityCG.cginc"
+            #include "UnityCG.cginc" // Correct include for standard pipeline
 
-            sampler2D _CameraDepthTexture; // Custom depth texture
+            struct Attributes {
+                float4 positionOS   : POSITION;
+                float2 uv           : TEXCOORD0;
+            };
+
+            struct Varyings {
+                float4 positionCS   : SV_POSITION;
+            };
+
+            Varyings vert (Attributes input) {
+                Varyings output;
+                output.positionCS = UnityObjectToClipPos(input.positionOS.xyz); 
+                return output;
+            }
+
+            void frag () : SV_Target {
+                // Do nothing in the fragment shader, just write to the depth buffer
+            }
+            ENDHLSL
+        }
+
+        // Main Pass (Samples depth texture and discards fragments)
+        Pass {
+            HLSLPROGRAM
+            #pragma vertex vert
+            #pragma fragment frag
+
+            #include "UnityCG.cginc" 
+
+            sampler2D _CameraDepthTexture; // The depth texture
 
             struct Attributes {
                 float4 positionOS   : POSITION;
@@ -36,22 +62,24 @@ Shader "Custom/HoleCutter" {
                 return output;
             }
 
-            half4 frag (Varyings input) : SV_Target {
-                // Sample the cutout texture
+            fixed4 frag (Varyings input) : SV_Target {
+                // Sample the depth texture
                 float depthValue = tex2D(_CameraDepthTexture, input.uv).r;
 
-                float3 worldPos = mul(unity_ObjectToWorld, input.positionOS.xyz);
+                // Get the object-space position of the fragment
+                float3 worldPos = mul(unity_ObjectToWorld, input.positionOS.xyz); 
 
-                float cameraDistance = length(worldPos - _WorldSpaceCameraPos.xyz);
+                // Calculate the distance from the camera to the fragment
+                float cameraDistance = length(worldPos - _WorldSpaceCameraPos.xyz); 
 
                 // Discard fragments behind the cutout mesh
-                if (depthValue < cameraDistance) { // Adjust threshold as needed
+                if (depthValue < cameraDistance) { 
                     discard;
                 }
 
-                // ... (Your other fragment shader logic) ...
+                // ... (Your other fragment shader logic) ... 
 
-                return half4(1,1,1,1);
+                return fixed4(1,1,1,1);
             }
             ENDHLSL
         }
