@@ -162,9 +162,9 @@ namespace UniversalMachine
             double ascription = UnitAscriptiveDensity / distance;
 
             Vector3 direction = (particle.transform.position - transform.position).normalized;
-            Vector3 force = direction * (float)ascription * ContactPotential;
+            Vector3 energy = direction * (float)ascription * ContactPotential;
 
-            particle.AddForce(force, Vector3.zero, Time.deltaTime);
+            particle.Ascription = particle.Ascription + new Vector4(energy.x, energy.y, energy.z, (float)ascription);
 
             FutureContacts.Add(particle);
         }
