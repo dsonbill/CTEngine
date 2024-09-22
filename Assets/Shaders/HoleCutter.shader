@@ -29,7 +29,7 @@ Shader "Custom/HoleCutter" {
                 return output;
             }
 
-            void frag () : SV_Target {
+            void frag () {
                 // Do nothing in the fragment shader, just write to the depth buffer
             }
             ENDHLSL
@@ -67,7 +67,7 @@ Shader "Custom/HoleCutter" {
                 float depthValue = tex2D(_CameraDepthTexture, input.uv).r;
 
                 // Get the object-space position of the fragment
-                float3 worldPos = mul(unity_ObjectToWorld, input.positionOS.xyz); 
+                float3 worldPos = mul(unity_ObjectToWorld, input.positionCS.xyz); 
 
                 // Calculate the distance from the camera to the fragment
                 float cameraDistance = length(worldPos - _WorldSpaceCameraPos.xyz); 

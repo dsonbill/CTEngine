@@ -141,7 +141,8 @@ PlayerSettings:
   visionOSBundleVersion: 1.0
   tvOSBundleVersion: 1.0
   bundleVersion: 1.x00318455312
-  preloadedAssets: []
+  preloadedAssets:
+  - {fileID: 11400000, guid: faef3b3de5c873c45aaf2b27ad7e6fd0, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -760,7 +761,8 @@ PlayerSettings:
     Android: 1
   il2cppCompilerConfiguration: {}
   il2cppCodeGeneration: {}
-  il2cppStacktraceInformation: {}
+  il2cppStacktraceInformation:
+    Android: 1
   managedStrippingLevel:
     EmbeddedLinux: 1
     GameCoreScarlett: 1
