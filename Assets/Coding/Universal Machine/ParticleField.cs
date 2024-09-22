@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using Unity.Burst;
 
 namespace UniversalMachine
 {
@@ -29,6 +30,8 @@ namespace UniversalMachine
         public ForceExchange ForceExchanger;
 
         public SpacetimeFabric Substrate;
+
+        List<Particle> simulatedParticles = new List<Particle>();
 
         public void Attach(Particle particle)
         {
@@ -63,13 +66,15 @@ namespace UniversalMachine
 
         }
 
+        [BurstCompile(CompileSynchronously = true)]
         void Update()
         {
+
             int y;
             for (int i = 0; i < ParticlesPerUpdate; i++)
             {
                 y = PreviousParticles;
-                if (y >= Simulands.Count) continue;
+                if (y == Simulands.Count) continue;
 
 
                 Disc.ApplyForce(Simulands[y]);
@@ -89,9 +94,14 @@ namespace UniversalMachine
                     light.UpdateParticle(Simulands[y]);
                 }
 
-                //Shackle.Bind(Simulands[y]);
+                Shackle.Bind(Simulands[y]);
 
-                
+                if (simulatedParticles.Count - 1 > 0)
+                {
+                    //ForceExchanger.Exchange(simulatedParticles, Simulands[y]);
+                }
+
+                simulatedParticles.Add(Simulands[y]);
 
                 PreviousParticles++;
             }
@@ -100,12 +110,14 @@ namespace UniversalMachine
             //for (int i = 0; i < ParticlesPerUpdate; i++)
             //    simulatedParticles.Add(Simulands[i + PreviousParticles - ParticlesPerUpdate]);
 
-            //if (simulatedParticles.Count - 1 > 0)
-            //    ForceExchanger.Exchange(simulatedParticles, Simulands[y]);
+
 
 
             if (PreviousParticles == Simulands.Count)
+            {
                 PreviousParticles = 0;
+                simulatedParticles = new List<Particle>();
+            }
 
             
             
