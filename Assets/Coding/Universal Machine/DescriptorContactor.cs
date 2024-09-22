@@ -166,7 +166,7 @@ namespace UniversalMachine
 
             particle.Ascription = particle.Ascription + new Vector4(energy.x, energy.y, energy.z, (float)ascription);
 
-            FutureContacts.Add(particle);
+            //FutureContacts.Add(particle);
         }
 
         void ContactQuantum()
