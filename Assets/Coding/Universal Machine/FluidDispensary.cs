@@ -91,7 +91,7 @@ namespace UniversalMachine
 
             // Initialize Ascription with a default value 
             p.Assertion = Vector4.one * 0.001f;
-            p.Ascription = new Vector4(1, 1, 1, 0.001f);
+            //p.Ascription = new Vector4(1, 1, 1, 0.001f);
 
             // Initialize Depth with a default value
             p.Depth = 0.4f; // Replace with a more meaningful calculation if necessary 

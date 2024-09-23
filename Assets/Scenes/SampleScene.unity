@@ -1980,7 +1980,7 @@ MonoBehaviour:
   Energy: 0
   classicalThreshold: 0.3
   quantumThreshold: 0.7
-  forceStrength: 12
+  forceStrength: 3.4
 --- !u!1 &4546815440033902346
 GameObject:
   m_ObjectHideFlags: 0
@@ -2265,7 +2265,7 @@ MonoBehaviour:
   IdeologicalReasoning: 5.48
   AscriptiveFunctioning: 1.29
   ExistorClass: 1
-  ContactPotential: 0.53207
+  ContactPotential: 0.0053207
   FutureContacts: []
   EmissionMultiplant: 20.04
   GroundLevel: {fileID: 1896545962}
@@ -2394,7 +2394,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Prefabricant: {fileID: 6120602784351482171}
   QuantaTree: {fileID: 2729531651007892672}
-  QuantaPerSecond: 4
+  QuantaPerSecond: 9
 --- !u!4 &6612989593586262944
 Transform:
   m_ObjectHideFlags: 0
