@@ -1437,9 +1437,9 @@ MonoBehaviour:
   Height: 1.98
   Rotation: 0
   Flow: {x: 1, y: 1, z: 0}
-  TorqueStrength: 15
-  forceMultiplier: 26
-  maxForce: 140
+  TorqueStrength: 3
+  forceMultiplier: 5
+  maxForce: 6
 --- !u!4 &786184422500279168
 Transform:
   m_ObjectHideFlags: 0
@@ -1980,7 +1980,7 @@ MonoBehaviour:
   Energy: 0
   classicalThreshold: 0.3
   quantumThreshold: 0.7
-  forceStrength: 80
+  forceStrength: 12
 --- !u!1 &4546815440033902346
 GameObject:
   m_ObjectHideFlags: 0
@@ -2070,9 +2070,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a36c2974c8ed7f4e981d5a23467cef6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Limit: 35
-  InfluenceRadius: 0.13
-  InfluenceStrength: 10
+  Limit: 64
+  InfluenceRadius: 0.4
+  InfluenceStrength: 2
   Line: {fileID: 1195626182}
   energyGradient:
     serializedVersion: 2
@@ -2104,7 +2104,7 @@ MonoBehaviour:
     m_ColorSpace: -1
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
-  consolidationInterval: 0.6
+  consolidationInterval: 2.4
   Parent: {fileID: 6044976473950063183}
 --- !u!33 &4907099301247590335
 MeshFilter:
@@ -2230,8 +2230,8 @@ MonoBehaviour:
   Hole: {fileID: 6125526531233429285}
   Diameter: 1.515
   Depth: -0.5
-  AttractionStrength: 10
-  InfluenceRadius: 5
+  AttractionStrength: 4
+  InfluenceRadius: 0.22
 --- !u!33 &5819250534009078524
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -2445,7 +2445,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Cylinder: {fileID: 6719812355225319518}
   Diameter: 0.48
-  Binding: 50
+  Binding: 6
 --- !u!1 &6719812355225319518
 GameObject:
   m_ObjectHideFlags: 0
