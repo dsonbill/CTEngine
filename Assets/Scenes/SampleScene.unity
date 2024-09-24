@@ -2341,8 +2341,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Limit: 64
-  InfluenceRadius: 0.4
-  InfluenceStrength: 2
+  InfluenceRadius: 0.04
+  InfluenceStrength: 0.85
   Line: {fileID: 1195626182}
   energyGradient:
     serializedVersion: 2
@@ -2374,7 +2374,7 @@ MonoBehaviour:
     m_ColorSpace: -1
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
-  consolidationInterval: 2.4
+  consolidationInterval: 0.3
   Parent: {fileID: 2092566515}
   Debug: 0
 --- !u!33 &4907099301247590335
