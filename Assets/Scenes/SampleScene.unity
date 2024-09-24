@@ -142,7 +142,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 403221378}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 11
   m_Type: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -246,7 +246,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PotentialHole: {fileID: 8733956668387908398}
   potentialHoleMaterial: {fileID: 0}
-  fluctuationSpeed: 2
+  fluctuationSpeed: 0.126
   amplitude: 1
 --- !u!4 &614705953
 Transform:
@@ -2586,7 +2586,7 @@ MonoBehaviour:
   ExistorClass: 1
   ContactPotential: 0.0053207
   FutureContacts: []
-  EmissionMultiplant: 20.04
+  EmissionMultiplant: 4.7
   GroundLevel: {fileID: 1896545962}
   InitialHeightAboveGround: 0
   AscriptiveFunctioningDecayRate: 0.001
@@ -2744,7 +2744,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TorqueStrength: 2
   Intensity: 5.66
-  Potential: 19.3
+  Potential: 6
   Light: {fileID: 2919732935863098194}
   constantAttenuation: 1
   linearAttenuation: 0.871
