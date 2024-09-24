@@ -282,7 +282,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -660}
+  m_AnchoredPosition: {x: 0, y: -700}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &834274027
@@ -2376,7 +2376,7 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   consolidationInterval: 2.4
   Parent: {fileID: 2092566515}
-  Debug: 1
+  Debug: 0
 --- !u!33 &4907099301247590335
 MeshFilter:
   m_ObjectHideFlags: 0
