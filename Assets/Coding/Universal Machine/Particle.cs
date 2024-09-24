@@ -425,7 +425,7 @@ namespace UniversalMachine
 
             applicant = Applicate(applicant);
 
-            Vector3 projection = Project(transform.localPosition, transform.localPosition + delta * applicant.magnitude, vail);
+            Vector3 projection = Project(transform.position, transform.localPosition + delta * applicant.magnitude, vail);
             projection = Applicate(projection);
 
             Projections.Add(projection);

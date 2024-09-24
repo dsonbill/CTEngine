@@ -26,6 +26,7 @@ namespace UniversalMachine
         public float consolidationInterval = 5f; // Consolidate every 5 seconds
 
         public Transform Parent;
+        public bool Debug;
 
         // A single path segment
         public class Mark
@@ -63,7 +64,7 @@ namespace UniversalMachine
             for (int i = 0; i < Path.Count; i++)
             {
                 LineRenderer LR = GameObject.Instantiate(Line).GetComponent<LineRenderer>();
-                LR.gameObject.transform.SetParent(transform);
+                LR.gameObject.transform.SetParent(Parent.transform);
 
                 LR.positionCount = 2;
 
@@ -162,8 +163,13 @@ namespace UniversalMachine
 
         void Update()
         {
-            //UpdateLineRenderer();
+            if(Debug) UpdateLineRenderer();
 
+        }
+
+        public void Debugging()
+        {
+            Debug = !Debug;
         }
 
         public Vector3 Mul(Vector3 vector1, Vector3 vector2)
