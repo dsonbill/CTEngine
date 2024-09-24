@@ -7,7 +7,7 @@ Shader "Custom/PotentialHoleShader" {
         _Distortion ("Distortion", Float) = 0.2
     }
     SubShader {
-        Tags { "RenderType"="Opaque" "RenderPipeline" = "HDRenderPipeline" }
+        Tags { "RenderType"="Opaque" }
         LOD 100
 
         Pass {
@@ -23,6 +23,7 @@ Shader "Custom/PotentialHoleShader" {
             float _Intensity;
             float _Falloff;
             float _Distortion;
+            float4 _MainTex_ST;
 
             struct Attributes {
                 float4 positionOS   : POSITION;
@@ -54,16 +55,13 @@ Shader "Custom/PotentialHoleShader" {
                 // Calculate the distortion amount
                 float distortion = intensity * _Distortion;
 
-                // Sample the main texture and apply the hole color
-                half4 texColor = tex2D(_MainTex, input.uv);
-                half4 holeColor = _Color;
-                half4 finalColor = lerp(texColor, holeColor, intensity);
-
                 // Apply distortion to the UV coordinates
                 float2 distortedUV = input.uv + distortion * float2(sin(input.uv.x * 10), cos(input.uv.y * 10));
 
-                // Sample the texture with the distorted UV
-                finalColor = tex2D(_MainTex, distortedUV); 
+                // Sample the main texture and apply the hole color
+                half4 texColor = tex2D(_MainTex, distortedUV);
+                half4 holeColor = _Color;
+                half4 finalColor = lerp(texColor, holeColor, intensity);
 
                 return finalColor;
             }
