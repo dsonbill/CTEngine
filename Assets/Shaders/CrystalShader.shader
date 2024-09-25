@@ -179,7 +179,7 @@ float3 CalculateTriclinicLatticePoint(float3 vertexPosition, float unitCellSize)
 
                 // Calculate the noise value
                float2 noiseUV = v.vertex.xz * _NoiseScale;
-               float noiseValue = tex2D(_NoiseTex, noiseUV).r;
+               float noiseValue = tex2Dlod(_NoiseTex, float4(noiseUV.x, noiseUV.y, 0, 0).r);
 
                // Determine the lattice point based on the vertex position
                float3 latticePoint = float3(floor(v.vertex.x / _UnitCellSize) * _UnitCellSize, 
