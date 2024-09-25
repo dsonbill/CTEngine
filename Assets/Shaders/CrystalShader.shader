@@ -49,28 +49,12 @@ Shader "Custom/CrystalShader" {
                 float2 uv : TEXCOORD0;
                 float3 worldPos : TEXCOORD1;
             };
-            
-            // In your vertex shader:
-            v2f vert (appdata v) {
-                v2f o;
-
-                // Calculate the noise value
-               float2 noiseUV = v.vertex.xz * _NoiseScale;
-               float noiseValue = tex2D(_NoiseTex, noiseUV).r;
-
-               // Determine the lattice point based on the vertex position
-               float3 latticePoint = float3(floor(v.vertex.x / _UnitCellSize) * _UnitCellSize, 
-                                 floor(v.vertex.y / _UnitCellSize) * _UnitCellSize,
-                                 floor(v.vertex.z / _UnitCellSize) * _UnitCellSize);
-
-               // Calculate the distance to the lattice point
-               float distanceToLattice = distance(v.vertex.xyz, latticePoint); 
 
 
 
 
 
-               float3 CalculateHexagonalLatticePoint(float3 vertexPosition, float unitCellSize)
+float3 CalculateHexagonalLatticePoint(float3 vertexPosition, float unitCellSize)
 {
     // Calculate the distance from the vertex to the origin along the X and Z axes
     float xDist = abs(vertexPosition.x);
@@ -182,7 +166,28 @@ float3 CalculateTriclinicLatticePoint(float3 vertexPosition, float unitCellSize)
 }
 
 
-               
+
+
+
+
+
+
+            
+            // In your vertex shader:
+            v2f vert (appdata v) {
+                v2f o;
+
+                // Calculate the noise value
+               float2 noiseUV = v.vertex.xz * _NoiseScale;
+               float noiseValue = tex2D(_NoiseTex, noiseUV).r;
+
+               // Determine the lattice point based on the vertex position
+               float3 latticePoint = float3(floor(v.vertex.x / _UnitCellSize) * _UnitCellSize, 
+                                 floor(v.vertex.y / _UnitCellSize) * _UnitCellSize,
+                                 floor(v.vertex.z / _UnitCellSize) * _UnitCellSize);
+
+               // Calculate the distance to the lattice point
+               float distanceToLattice = distance(v.vertex.xyz, latticePoint);
                
 
                if (_CrystalSystem == 0) // Cubic System
